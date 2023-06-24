@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose --coverage --detectOpenHandles --forceExit",
-    "start": "nodemon"
+    "start": "node index.js",
+    "test": "jest --watchAll --verbose --coverage --detectOpenHandles --forceExit"
   },
   "engines": {
     "node": "18.16.0"
