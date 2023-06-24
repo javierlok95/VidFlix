@@ -1,5 +1,5 @@
 const auth = require('../middleware/auth');
-const jwt =require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
@@ -9,8 +9,8 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/me', auth, async (req, res) => {
-   const user = await User.findById(req.user._id).select('-password'); //"-" means exclude,  in this case exclude password property
-   res.send(user);
+    const user = await User.findById(req.user._id).select('-password'); //"-" means exclude,  in this case exclude password property
+    res.send(user);
 });
 
 // app.get(), app.post(), app.put(), app.delete() all these methods correspond with http verbs
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     const { error } = validate(req.body); //{ error } is equivalent from (result.error) - object destructuring
     if (error) return res.status(400).send(error.details[0].message);
 
-    let user = await User.findOne({ email:req.body.email })
+    let user = await User.findOne({ email: req.body.email })
     if (user) return res.status(400).send('User already registered.');
 
     user = new User(_.pick(req.body, ['name', 'email', 'password'])); // The user object. Also we use "_" from lodash module to summarize it instead of have name "name: req.body.name", "email: req.body.email," and "password: req.body.password"

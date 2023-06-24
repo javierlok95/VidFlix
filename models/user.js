@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     isAdmin: Boolean
 });
 
-userSchema.methods.generateAuthToken = function() {
+userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get('jwtPrivateKey')); //We don't use the arrow function because of the "this". Arrow function is for standalone function. If you want to create a method that is part of an object, don't use an arrow function
     return token;
 }

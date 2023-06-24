@@ -29,45 +29,45 @@ const rentalSchema = new mongoose.Schema({
       title: {
         type: String,
         required: true,
-        trim: true, 
+        trim: true,
         minlength: 5,
         maxlength: 255
       },
-      dailyRentalRate: { 
-        type: Number, 
+      dailyRentalRate: {
+        type: Number,
         required: true,
         min: 0,
         max: 255
-      }   
+      }
     }),
     required: true
   },
-  dateOut: { 
-    type: Date, 
+  dateOut: {
+    type: Date,
     required: true,
     default: Date.now
   },
-  dateReturned: { 
+  dateReturned: {
     type: Date
   },
-  rentalFee: { 
-    type: Number, 
+  rentalFee: {
+    type: Number,
     min: 0
   }
 });
 
-rentalSchema.statics.lookup = function(customerId, movieId) {
+rentalSchema.statics.lookup = function (customerId, movieId) {
   return this.findOne({ //Using "this" will reference the Rental class
     'customer._id': customerId,
     'movie._id': movieId,
-});
+  });
 }
 
-rentalSchema.methods.return = function() {
+rentalSchema.methods.return = function () {
   this.dateReturned = new Date();
 
   const rentalDays = moment().diff(this.dateOut, 'days');
-    this.rentalFee = rentalDays * this.movie.dailyRentalRate;
+  this.rentalFee = rentalDays * this.movie.dailyRentalRate;
 }
 
 const Rental = mongoose.model('Rental', rentalSchema);
@@ -81,5 +81,5 @@ function validateRental(rental) {
   return Joi.validate(rental, schema);
 }
 
-exports.Rental = Rental; 
+exports.Rental = Rental;
 exports.validate = validateRental;

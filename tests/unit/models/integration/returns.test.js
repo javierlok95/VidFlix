@@ -1,8 +1,8 @@
 const moment = require('moment');
 const request = require('supertest');
-const {Rental} = require('../../../../models/rental');
-const {Movie} = require('../../../../models/movie');
-const {User} = require('../../../../models/user');
+const { Rental } = require('../../../../models/rental');
+const { Movie } = require('../../../../models/movie');
+const { User } = require('../../../../models/user');
 const mongoose = require('mongoose');
 
 
@@ -16,12 +16,12 @@ describe('/api/returns', () => { //Post /api/returns {customerId, movieId}
 
     const exec = () => {
         return request(server)
-        .post('/api/returns')
-        .set('x-auth-token', token)
-        .send({ customerId, movieId });
+            .post('/api/returns')
+            .set('x-auth-token', token)
+            .send({ customerId, movieId });
     }
 
-    beforeEach( async () => {
+    beforeEach(async () => {
         server = require('../../../../index');
         server.unref();
 
@@ -59,7 +59,7 @@ describe('/api/returns', () => { //Post /api/returns {customerId, movieId}
     });
 
     it('should return 401 if client is not logged in', async () => {
-       token = '';
+        token = '';
 
         const res = await exec();
 
@@ -133,8 +133,8 @@ describe('/api/returns', () => { //Post /api/returns {customerId, movieId}
     it('should return the rental if input is valid', async () => {
         const res = await exec();
 
-      const rentalInDb = await Rental.findById(rental._id);
+        const rentalInDb = await Rental.findById(rental._id);
 
-      expect(Object.keys(res.body)).toEqual(expect.arrayContaining(['dateOut', 'dateReturned','rentalFee', 'customer', 'movie' ]));
+        expect(Object.keys(res.body)).toEqual(expect.arrayContaining(['dateOut', 'dateReturned', 'rentalFee', 'customer', 'movie']));
     });
 });

@@ -8,14 +8,14 @@ const auth = require('../routes/auth');
 const returns = require('../routes/returns')
 const error = require('../middleware/error');
 
-module.exports = function(app) {
-app.use(express.json()); //adding a piece of middle ware
-app.use('/api/genres', genres); //Telling express that any routes that start "/api/genres", use the 'genre' router
-app.use('/api/customers', customers);
-app.use('/api/movies', movies);
-app.use('/api/rentals', rentals);
-app.use('/api/users',users);
-app.use('/api/auth', auth);
-app.use('/api/returns', returns);
-app.use(error); //Passing error handling
+module.exports = function (app) {
+    app.use(express.json()); //adding a piece of middle ware
+    app.use('/api/genres', genres); //Telling express that any routes that start "/api/genres", use the 'genre' router
+    app.use('/api/customers', customers);
+    app.use('/api/movies', movies);
+    app.use('/api/rentals', rentals);
+    app.use('/api/users', users);
+    app.use('/api/auth', auth);
+    app.use('/api/returns', returns);
+    app.use(error); //Passing error handling
 }
