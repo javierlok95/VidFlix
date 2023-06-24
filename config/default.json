@@ -1,4 +1,4 @@
 {
-    "jwtPrivateKey": "",
+    "jwtPrivateKey": "MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ",
     "db": "mongodb://127.0.0.1:27017/vidflix"
 }
