@@ -1,5 +1,5 @@
 {
-  "name": "vidly",
+  "name": "vidflix",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "jest --watchAll --verbose --coverage --detectOpenHandles --forceExit",
     "start": "node index.js"
   },
-  "engines":{
+  "engines": {
     "node": "18.16.0"
   },
   "keywords": [],
