@@ -1,5 +1,5 @@
 {
     "jwtPrivateKey": "1234",
-    "db": "mongodb://0.0.0.0:27017/flix_tests"
+    "db": "mongodb://127.0.0.1:27017/vidflix_tests"
 
 }
