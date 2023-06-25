@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "vidflix_jwtPrivateKey",
+    "db": "vidflix_db"
+}
